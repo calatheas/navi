@@ -1,7 +1,10 @@
 spring:
   profiles:
     active: local
+
+
 logging:
-  config: classpath:logback-spring.xml
   level:
     root: INFO
+  file:
+    path: ${HOME}/logs

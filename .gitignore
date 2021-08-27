@@ -1,5 +1,7 @@
 .gradle
 /build/
+.DS*
+*log*
 
 # Ignore Gradle GUI config
 gradle-app.setting
