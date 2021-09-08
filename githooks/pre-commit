@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Get current git repo absolute path
+root_path=$(git rev-parse --show-toplevel)
+
+# When this repo changed, move in gradle project and start to build project
+if [ $(git status -s | wc -l) -gt 0 ]; then
+	cd ${root_path}/navi
+        ./gradlew build
+	exit $?
+fi
+
+exit 0
