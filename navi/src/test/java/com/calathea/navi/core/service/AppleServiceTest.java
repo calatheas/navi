@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import software.amazon.awssdk.services.ses.SesClient;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -16,6 +17,9 @@ import java.util.concurrent.TimeUnit;
 class AppleServiceTest {
     @Autowired
     AppleService appleService;
+
+    @Autowired
+    SesClient sesClient;
 
     Logger log = (Logger) LoggerFactory.getLogger(AppleServiceTest.class);
 
@@ -68,6 +72,4 @@ class AppleServiceTest {
         // 자식 스레드 종료되지 않도록 기다림
         TimeUnit.SECONDS.sleep(5);
     }
-
-
 }

@@ -8,6 +8,7 @@ class NaviApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
