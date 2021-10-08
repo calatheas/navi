@@ -28,6 +28,9 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 	implementation 'org.apache.commons:commons-lang3'
 	implementation 'software.amazon.awssdk:ses:2.15.0'
+
+	//redis
+	implementation 'org.redisson:redisson-spring-boot-starter:3.16.3'
 }
 
 test {
