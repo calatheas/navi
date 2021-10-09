@@ -8,8 +8,11 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Component
@@ -51,11 +54,11 @@ public class DistributedLockAspect {
 
         if (StringUtils.isNotBlank(transactionId)) {
             log.info("Wait for locks");
-//            RLock lock = redisService.getLock(transactionId);
-//            lock.tryLock(WAIT_SECONDS, LEASE_SECONDS, TimeUnit.SECONDS);
+            RLock lock = redisService.getLock(transactionId);
+            lock.tryLock(WAIT_SECONDS, LEASE_SECONDS, TimeUnit.SECONDS);
             log.info("Locked by this thread");
             Object object = joinPoint.proceed();
-//            lock.unlock();
+            lock.unlock();
             log.info("Unlocked by this thread");
             return object;
         } else {

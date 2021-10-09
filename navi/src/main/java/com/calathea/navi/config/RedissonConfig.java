@@ -6,20 +6,18 @@ import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.Resource;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 @Slf4j
-//@Configuration RedissonAutoConfiguration도 일단 제외
+@Configuration
 public class RedissonConfig {
     @Value("${spring.redis.port}")
     private int port;
 
     @Value("${spring.redis.host}")
-    private Resource host;
+    private String host;
 
     /**
      * 커스텀 빈이 아닌 내용은 자동으로 RedissonAutoConfiguration 이 실행됨
@@ -30,10 +28,8 @@ public class RedissonConfig {
     @Bean(destroyMethod = "shutdown")
     public RedissonClient redisson() throws IOException {
         Config config = new Config();
-        String host = new String(this.host.getInputStream().readAllBytes(), StandardCharsets.UTF_8).trim();
         String nodeAddress = String.format("redis://%s:%s", host, port);
-        config.useClusterServers()
-                .setNodeAddresses(List.of(nodeAddress));
+        config.useSingleServer().setAddress(nodeAddress);
         return Redisson.create(config);
     }
 }

@@ -1,12 +1,15 @@
 package com.calathea.navi.common;
 
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RedisService {
-//    @Autowired
-//    private RedissonClient redissonClient;
+    @Autowired
+    private RedissonClient redissonClient;
 
     @Value("${spring.redis.key-prefix}")
     private String prefix;
@@ -21,7 +24,7 @@ public class RedisService {
                 .toString();
     }
 
-//    public RLock getLock(String name) {
-//        return redissonClient.getLock(getKey(name));
-//    }
+    public RLock getLock(String name) {
+        return redissonClient.getLock(getKey(name));
+    }
 }
