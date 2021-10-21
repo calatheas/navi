@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HealthController {
     @GetMapping("/health")
     public String checkHealth() throws Exception {
-        throw new Exception("Force Exception!");
-//        return "Active";
+        return "Active";
     }
 
 }

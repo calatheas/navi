@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Slf4j
 public class LogAspect {
-    @Before("execution(* com.example.practice..*(..))")
+    @Before("execution(* com.calathea.navi..*(..))")
     public void beforeMethod(final JoinPoint joinPoint) {
         log.info("Test log!");
     }

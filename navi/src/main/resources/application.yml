@@ -1,3 +1,5 @@
+
+
 spring:
   profiles:
     active: local
@@ -14,5 +16,8 @@ aws:
 logging:
   level:
     root: INFO
+    org.springframework.transaction.interceptor: INFO
   file:
     path: ${HOME}/logs
+server:
+  port: 8081

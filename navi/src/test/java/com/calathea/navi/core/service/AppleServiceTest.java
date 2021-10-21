@@ -72,4 +72,9 @@ class AppleServiceTest {
         // 자식 스레드 종료되지 않도록 기다림
         TimeUnit.SECONDS.sleep(5);
     }
+
+    @Test
+    public void getApple() {
+        appleService.getApple();
+    }
 }
