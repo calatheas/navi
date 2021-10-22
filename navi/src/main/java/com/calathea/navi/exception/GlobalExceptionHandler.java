@@ -3,6 +3,7 @@ package com.calathea.navi.exception;
 import com.calathea.navi.model.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -17,6 +18,21 @@ import java.util.stream.Collectors;
 @Slf4j
 public class GlobalExceptionHandler {
 
+    /**
+     * 발생시기
+     * - 컨트롤러에 @RequestBody 안붙이고 object 를 매핑할때
+     * - json 신택스 에러(컴마가 한개 더 들어감)
+     */
+    @ExceptionHandler(BindException.class)
+    protected ResponseEntity<Object> handleBindException(final BindException bindException) {
+        List<FieldError> fieldErrorList = bindException.getBindingResult().getFieldErrors();
+
+        for (final FieldError element : fieldErrorList) {
+            log.error(element.getField()+":"+element.getCode());
+        }
+
+        return ResponseEntity.badRequest().body(CommonResponse.onBadRequest(fieldErrorList.stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage))));
+    }
     /**
      * ConstraintViolationException 발생시 응답 처리
      * 1. 처리 방법
