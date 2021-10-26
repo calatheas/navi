@@ -1,4 +1,4 @@
-package com.calathea.navi.sample;
+package com.calathea.navi.spring;
 
 import org.junit.jupiter.api.Test;
 import org.redisson.api.RAtomicLong;

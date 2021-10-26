@@ -43,8 +43,8 @@ public class GlobalExceptionHandler {
      *     - org.springframework.web.bind.annotation.RequestParam
      *     - javax.validation.constraints.*
      * 3. 발생되지 않는 경우
-     *     - PathVariable 이 필수인데 빈 문자열이거나 공백으로 들어오는 경우 -> 없는 것으로 판단하고 url 매핑이 안됨
-     *     - RequestParam 이 필수인데 없는 경우(null 인 경우) -> MissingServletRequestParameterException 발생
+     *     - PathVariable 이 필수인데 빈 문자열이거나 공백으로 들어오는 경우, 없는 것으로 판단하고 url 매핑이 안됨
+     *     - RequestParam 이 필수인데 없는 경우(null 인 경우), MissingServletRequestParameterException 발생
      * 4. 개발 가이드
      *     - PathVariable, RequestParam 은 모두 선택입력으로 변경하고 ConstraintViolationException 에서 처리될 수 있게 validation 로직을 구현하는 게 바람직함
      */

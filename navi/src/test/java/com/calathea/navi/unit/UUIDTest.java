@@ -1,4 +1,4 @@
-package com.calathea.navi.sample;
+package com.calathea.navi.unit;
 
 import com.calathea.navi.util.Encrypter;
 import org.junit.jupiter.api.Test;

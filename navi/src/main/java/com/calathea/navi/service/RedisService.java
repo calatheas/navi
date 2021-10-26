@@ -1,4 +1,4 @@
-package com.calathea.navi.common;
+package com.calathea.navi.service;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;

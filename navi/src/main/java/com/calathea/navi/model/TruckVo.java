@@ -1,10 +1,10 @@
-package com.calathea.navi.core.vo;
+package com.calathea.navi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class NaviMapVo extends NaviCommonVo {
+public class TruckVo extends CarVo {
     private String name;
 }

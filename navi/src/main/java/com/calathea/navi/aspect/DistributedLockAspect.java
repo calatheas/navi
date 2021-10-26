@@ -1,6 +1,6 @@
 package com.calathea.navi.aspect;
 
-import com.calathea.navi.common.RedisService;
+import com.calathea.navi.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
