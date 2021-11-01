@@ -1,7 +1,6 @@
 package com.calathea.navi.core.service;
 
 import com.calathea.navi.constants.CommonCodes;
-import com.calathea.navi.model.CarRequestVo;
 import com.calathea.navi.model.CarVo;
 import com.calathea.navi.model.TruckVo;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +16,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CarService {
-    public List<CarVo> getCars(CarRequestVo carRequestVo) {
-        if (carRequestVo.getCarTypeCode() == CommonCodes.CarTypeCode.TRUCK) {
+    public List<CarVo> getCars(CommonCodes.CarTypeCode carTypeCode) {
+        if (carTypeCode == CommonCodes.CarTypeCode.TRUCK) {
             return List.of(
                     new TruckVo("truck1"),
                     new TruckVo("truck2")
