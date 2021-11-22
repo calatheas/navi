@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import static java.lang.Thread.sleep;
+
 @Slf4j
 @Transactional(rollbackFor = Exception.class)
 @Service
@@ -52,6 +54,11 @@ public class AppleService {
         validate(seed);
         appleRepository.growApple();
         log.info("runAppleAsyncAnnotation");
+        try {
+            sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getUUID() {

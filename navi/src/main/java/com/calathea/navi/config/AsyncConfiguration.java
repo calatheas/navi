@@ -13,7 +13,7 @@ public class AsyncConfiguration implements AsyncConfigurer {
     @Bean
     public ThreadPoolTaskExecutor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(3);
+        executor.setCorePoolSize(2);
         executor.setMaxPoolSize(30);
         executor.setQueueCapacity(3);
         executor.setThreadNamePrefix("Async - ");

@@ -67,12 +67,15 @@ class AppleServiceTest {
     @Test
     @DisplayName("@Async annotation 실행")
     public void async2() throws InterruptedException {
-        appleService.runAppleAsyncAnnotation("seed");
+        appleService.runAppleAsyncAnnotation("seed1");
+        appleService.runAppleAsyncAnnotation("seed2");
+        appleService.runAppleAsyncAnnotation("seed3");
+        appleService.runAppleAsyncAnnotation("seed4");
 
         log.info("메인 스레드 종료하고 비동기 스레드 시작됨");
 
         // 자식 스레드 종료되지 않도록 기다림
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(50);
     }
 
     @Test
