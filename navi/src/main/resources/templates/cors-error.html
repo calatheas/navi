@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cors error 예제</title>
+</head>
+<body>
+<span th:text="${car.carId}"></span><br/>
+<span th:text="${car.name}"></span><br/>
+</body>
+<script>
+window.onload = function() {
+    var xmlHttp = new XMLHttpRequest();
+
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === xmlHttp.DONE) {
+            if (xmlHttp.status === 200) {
+                // do something with xmlHttp.responseText
+                console.log(xmlHttp.responseText)
+            } else {
+                // handle errors
+            }
+        }
+    };
+    const url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=C9N8e%2F4xjRi46XJsJT581lKcQ0rHaATkAVaEdGvyFxF1QInib4vA18vi7pG4D1GPAAZ6ZZ2pwLd9LPtwg%2B58TQ%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&base_date=20211030&base_time=0900&nx=58&ny=126"
+    xmlHttp.open( "GET", url);
+    xmlHttp.send(null);
+}
+</script>
+</html>

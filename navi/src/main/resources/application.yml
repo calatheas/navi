@@ -8,6 +8,12 @@ spring:
   web:
     resources:
       static-locations: classpath:/resources/, classpath:/docs/
+  thymeleaf:
+    prefix: classpath:/templates/ # default value
+    check-template-location: true # default value
+    suffix: .html # default value
+    mode: HTML5 # default value = HTML
+    cache: false # default value = false
 
 aws:
   region: ap-northeast-2
